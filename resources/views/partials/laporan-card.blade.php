@@ -3,6 +3,7 @@
         <h3>{{ $laporan['nama_pelapor'] }}</h3>
         <p> {{ $laporan['lokasi'] }}</p>
         <p> Tinggi Genangan: {{ $laporan['tinggi_genangan'] }} cm</p>
+        <p>📅 {{ \Carbon\Carbon::parse($laporan['tanggal_kejadian'])->format('d M Y') }}</p>
     </div>
 
     @if ($laporan['tinggi_genangan'] < 30)

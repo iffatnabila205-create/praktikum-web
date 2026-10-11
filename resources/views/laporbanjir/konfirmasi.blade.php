@@ -21,6 +21,10 @@
             <td class="label">Tinggi Genangan Air</td>
             <td>{{ $tinggi_genangan }} cm</td>
         </tr>
+        <tr>
+            <td class="label">Tanggal Kejadian</td>
+            <td>{{ $tanggal_kejadian }}</td>
+        </tr>
     </table>
 
     <a href="{{ route('laporbanjir.form') }}" class="btn-back">Kirim Laporan Lain</a>

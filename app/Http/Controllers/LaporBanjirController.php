@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 
 class LaporBanjirController extends Controller
 {
-
-    protected $laporans = [
-        ['nama_pelapor' => 'nabila cantik', 'lokasi' => 'kota bekasi',    'tinggi_genangan' => 25],
-    ];
-
     public function index()
     {
         return view('laporbanjir.form');
@@ -19,10 +15,13 @@ class LaporBanjirController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_pelapor'    => 'required|string|max:100',
-            'lokasi'          => 'required|string|max:150',
-            'tinggi_genangan' => 'required|numeric|min:0',
+            'nama_pelapor'     => 'required|string|max:100',
+            'lokasi'           => 'required|string|max:150',
+            'tinggi_genangan'  => 'required|integer|min:0',
+            'tanggal_kejadian' => 'required|date',
         ]);
+
+        Laporan::create($validated);   // simpan ke database
 
         return view('laporbanjir.konfirmasi', $validated);
     }
@@ -30,7 +29,7 @@ class LaporBanjirController extends Controller
     public function daftar()
     {
         return view('laporbanjir.daftar', [
-            'laporans' => $this->laporans,
+            'laporans' => Laporan::all(),   // ambil dari database
         ]);
     }
 }

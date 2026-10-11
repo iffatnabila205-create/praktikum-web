@@ -27,7 +27,10 @@
         <input type="text" id="lokasi" name="lokasi">
 
         <label for="tinggi_genangan">Tinggi Genangan Air (cm)</label>
-        <input type="number" step="0.1" id="tinggi_genangan" name="tinggi_genangan">
+        <input type="number" id="tinggi_genangan" name="tinggi_genangan" value="{{ old('tinggi_genangan') }}" placeholder="Contoh: 45">
+
+        <label for="tanggal_kejadian">Tanggal Kejadian</label>
+        <input type="date" id="tanggal_kejadian" name="tanggal_kejadian" value="{{ old('tanggal_kejadian') }}"> 
 
         <button type="submit">Kirim Laporan</button>
     </form>
